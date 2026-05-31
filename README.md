@@ -67,3 +67,16 @@ The system checks scanned RFID UIDs against a list of authorised users:
 ```cpp
 {"22c6f939", "Ryan"}
 {"66752d43", "Cormac"}
+
+## System Architecture
+
+```mermaid
+flowchart TD
+    A[RFID Card] --> B[ESP32]
+    B --> C{Authorised?}
+    C -->|Yes| D[Send HTTP Request]
+    D --> E[Raspberry Pi API]
+    E --> F[Generate Token]
+    F --> G[Display Token on OLED]
+    C -->|No| H[Access Denied]
+```
