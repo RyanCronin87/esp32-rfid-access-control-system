@@ -88,7 +88,7 @@ flowchart TD
     K --> L[Chart.js Graphs]
 ```
 
-## Raspberry Pi Sensor System (Added Component)
+## Raspberry Pi Sensor System
 
 In addition to the ESP32 RFID system, the Raspberry Pi also runs a sensor monitoring subsystem.
 
