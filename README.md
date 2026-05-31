@@ -68,11 +68,9 @@ The system checks scanned RFID UIDs against a list of authorised users:
 {"22c6f939", "Ryan"}
 {"66752d43", "Cormac"}
 
-## System Architecture
-
 ```
 
-
+#System Architecture
 ```mermaid
 flowchart TD
     A[RFID Card] --> B[ESP32]
