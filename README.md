@@ -71,6 +71,7 @@ The system checks scanned RFID UIDs against a list of authorised users:
 ```
 
 ## System Architecture
+
 ```mermaid
 flowchart TD
     A[RFID Card] --> B[ESP32]
@@ -80,4 +81,49 @@ flowchart TD
     E --> F[Generate Token]
     F --> G[Display Token on OLED]
     C -->|No| H[Access Denied]
+
+    I[Sense HAT Sensor Logger] --> J[SQLite Database]
+    J --> E[Flask Backend]
+    E --> K[Web Dashboard]
+    K --> L[Chart.js Graphs]
+```
+
+## Raspberry Pi Sensor System (Added Component)
+
+In addition to the ESP32 RFID system, the Raspberry Pi also runs a sensor monitoring subsystem.
+
+---
+
+### Sensor Logger (Sense HAT)
+
+A Python script continuously reads environmental data from the Sense HAT:
+
+- Temperature  
+- Humidity  
+- Pressure  
+
+Data is logged every 10 seconds into a local SQLite database (`sensehat.db`).
+
+---
+
+### Database Usage
+
+The Raspberry Pi uses a shared SQLite database:
+
+- Stored locally on the Pi  
+- Accessed by both:
+  - Sensor logger (write)
+  - Flask backend (read)
+
+---
+
+### Table Structure
+
+```sql
+sensor_data (
+    temperature REAL,
+    humidity REAL,
+    pressure REAL,
+    timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
+)
 ```
