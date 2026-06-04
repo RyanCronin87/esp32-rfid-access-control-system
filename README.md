@@ -127,3 +127,29 @@ sensor_data (
     timestamp DATETIME DEFAULT CURRENT_TIMESTAMP
 )
 ```
+
+## Project Components
+
+The project consists of:
+
+- ESP32 RFID access control firmware
+- Raspberry Pi Flask backend
+- Sense HAT environmental sensor logger
+- SQLite database storage
+- Web dashboard with Chart.js visualisation
+
+---
+
+## Future Improvements
+
+- HTTPS support
+- Multi-user authentication
+- Relay-controlled door lock integration
+- Remote access dashboard
+- Email or mobile notifications
+
+---
+
+## Author
+
+Ryan Cronin
